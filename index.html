@@ -15,8 +15,24 @@
     <title>To-do</title>
 </head>
 
-<body>
-
+<body class="back-g">
+    <main id="main-root" class="container">
+        <h1 class="text-center fw-semibold my-5">Vue To Do List</h1>
+        <ul class="list-group mb-4">
+            <li class="list-group-item align-items-center d-flex"
+                :class="{'text-decoration-line-through': element.done == true}" v-for="(element, index) in todo"
+                @click="element.done = !element.done;">
+                {{ element.text }}
+                <button @click="removeToDo(index, 1)" class="btn auto color"><i class="fa-solid fa-x"></i></button>
+            </li>
+        </ul>
+        <div class="input-group mb-3">
+            <input v-model.trim="newToDo" @keyUp.enter="addNewToDo(newToDo)" type="text" class="form-control"
+                placeholder="Insert new Todo" aria-label="Username" aria-describedby="basic-addon1">
+            <button @click="addNewToDo(newToDo)" class="btn btn-success" type="button" id="button-addon2">Add
+                New</button>
+        </div>
+    </main>
 </body>
 <script src="./script.js"></script>
 

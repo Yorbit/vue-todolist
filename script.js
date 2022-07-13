@@ -27,5 +27,25 @@ const app = new Vue(
                 },
             ]
         },
+
+        methods: {
+            removeToDo: function (index) {
+                this.todo.splice(index, 1);
+            },
+
+            addNewToDo: function (toDoText) {
+                if (toDoText != '') {
+                    const newMessage = {
+                        text: toDoText,
+                        done: false
+                    }
+                    this.todo.push(newMessage);
+
+                    this.newToDo = '';
+                } else {
+                    alert('Stai Inserendo un Nuovo To-do');
+                }
+            }
+        }
     }
 )
